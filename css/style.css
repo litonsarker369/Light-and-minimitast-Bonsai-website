@@ -1,0 +1,1139 @@
+/* ======================================================
+ * BASE STYLES & TYPOGRAPHY
+ * ====================================================== */
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --serif-font: 'Playfair Display', serif; /* Elegant serif for headings */
+    --text-color-dark: #333;
+    --text-color-light: #555;
+    --accent-color-light: #efe8dc; /* Light tan/beige from P8 panel/Footer */
+    --accent-color-dark: #7d6b5e; /* Muted brown from logo/Footer text */
+    --bg-white: #ffffff;
+    --border-light: #f0f0f0;
+    --nav-height: 90px;
+}
+
+body {
+    font-family: var(--primary-font);
+    color: var(--text-color-light);
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-color: var(--bg-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--serif-font);
+    color: var(--text-color-dark);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--text-color-dark);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color-dark);
+    text-decoration: none;
+}
+
+/* Utility Class for RTL Arabic Text */
+.arabic-text {
+    text-align: justify;
+    direction: rtl;
+    font-size: 1rem;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+
+/* ======================================================
+ * 1. Navigation Bar
+ * ====================================================== */
+.bonsai-navbar {
+    padding: 1.5rem 0;
+    background-color: transparent; /* Initially transparent */
+    transition: background-color 0.4s ease, padding 0.4s ease;
+    z-index: 1030;
+    box-shadow: none; /* No initial shadow */
+}
+
+.bonsai-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5); /* Lighter toggler for dark hero */
+}
+
+.bonsai-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.bonsai-logo-link {
+    padding: 0;
+    height: var(--nav-height); /* Set a fixed height for the logo area */
+    display: flex;
+    align-items: center;
+}
+
+.bonsai-logo-img {
+    height: 40px; /* Adjust logo height as needed */
+    width: auto;
+    filter: brightness(0) invert(1); /* Make logo white initially for dark hero */
+    transition: filter 0.4s ease;
+}
+
+.bonsai-nav-links .nav-link {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9) !important; /* Lighter text for dark hero */
+    font-weight: 400;
+    margin-left: 2rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.bonsai-nav-links .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-color-dark); /* Accent color underline */
+    transition: width 0.3s ease;
+}
+
+.bonsai-nav-links .nav-link:hover::after,
+.bonsai-nav-links .nav-link.active::after {
+    width: 100%;
+}
+
+.bonsai-nav-links .nav-link:hover {
+    color: var(--accent-color-dark) !important;
+}
+
+
+/* Navbar scrolled/active state */
+.bonsai-navbar.navbar-scrolled {
+    background-color: var(--bg-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 0.8rem 0;
+}
+
+.bonsai-navbar.navbar-scrolled .bonsai-logo-img {
+    filter: none; /* Revert logo to original color */
+}
+
+.bonsai-navbar.navbar-scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.bonsai-navbar.navbar-scrolled .bonsai-nav-links .nav-link {
+    color: var(--text-color-dark) !important;
+}
+
+
+/* ======================================================
+ * 2. Hero Section
+ * ====================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    /* Updated high-res hero image from P1 upload */
+    background-image: url('https://i.ibb.co.com/hxLkfpDr/88d4a265692bd5b49bbc6d5bcf5fb94d.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35); /* Subtle dark overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 90%;
+}
+
+.hero-title {
+    font-family: var(--serif-font);
+    font-size: 5rem; /* Larger, more impactful title */
+    font-weight: 400;
+    letter-spacing: 0.1em; /* Subtle letter spacing */
+    margin-bottom: 1rem;
+    color: var(--bg-white);
+}
+
+.hero-subtitle {
+    font-family: var(--primary-font);
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.2em; /* More letter spacing for subtitle */
+    opacity: 0.9;
+    color: var(--bg-white);
+    text-transform: uppercase;
+}
+
+/* ======================================================
+ * 3. Philosophy Section (P3)
+ * ====================================================== */
+.philosophy-section {
+    background-color: var(--bg-white);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.philosophy-main-title {
+    font-family: var(--serif-font);
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+.philosophy-main-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -10px;
+    width: 50%; /* Center underline */
+    height: 1px;
+    background-color: var(--accent-color-dark);
+}
+
+.philosophy-quote {
+    font-family: var(--primary-font);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: var(--text-color-dark);
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.philosophy-text-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color-light);
+    font-weight: 300;
+}
+
+.philosophy-text-content a {
+    color: var(--accent-color-dark);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+.philosophy-text-content a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color-dark);
+}
+
+.philosophy-image-wrapper {
+    overflow: hidden;
+    margin-top: 4rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.philosophy-bottom-img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+    object-position: 50% 20%;
+    display: block;
+}
+
+/* ======================================================
+ * 4. Videos Section (P5)
+ * ====================================================== */
+.video-section {
+    background-color: var(--bg-white);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.video-hero-banner {
+    min-height: 500px;
+    position: relative;
+    /* This background is set in HTML for the large thumbnail block */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+    overflow: hidden;
+}
+
+.video-main-title {
+    font-family: var(--serif-font);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.video-section .title-underline {
+    width: 70px;
+    height: 1px;
+    background-color: var(--accent-color-dark);
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.video-thumb-container {
+    position: relative;
+    width: 570px;
+    height: auto;
+    flex-shrink: 0;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-thumb-container.large-thumb {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    background-color: transparent;
+    border-radius: 8px; /* Added border radius for the large block */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+}
+.video-thumb-container.large-thumb img {
+    border-radius: 8px;
+}
+
+.video-thumb-container.large-thumb .play-icon {
+    font-size: 2.5rem;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    /* Override absolute positioning for the large block */
+    transform: translate(-50%, -50%); 
+    color: white;
+}
+
+.video-thumb-container.large-thumb .video-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    padding: 3rem;
+    border-radius: 0 0 8px 8px;
+}
+
+.video-thumb-container.large-thumb .video-subtitle {
+    font-family: var(--serif-font);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--bg-white);
+    margin-bottom: 0.5rem;
+}
+
+.video-thumb-container.large-thumb .video-description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.video-thumb-container:not(.large-thumb):hover {
+    transform: translateY(-5px); /* Lift animation on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.video-thumb-container:not(.large-thumb):hover .video-thumb {
+    transform: scale(1.08); /* Subtle zoom on hover */
+}
+
+/* Black and white filter for Bonsai Story */
+.black-white-filter {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+.video-thumb-container:hover .black-white-filter {
+    filter: grayscale(0%); /* Color reveal on hover */
+}
+
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-white);
+    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 3;
+}
+
+.video-thumb-container:hover .play-icon {
+    background-color: rgba(125, 107, 94, 0.9); /* Accent color on hover */
+}
+
+.video-text-content {
+    flex-grow: 1;
+}
+
+.video-block-title {
+    font-family: var(--serif-font); /* Using Serif for titles */
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 0;
+    color: var(--text-color-dark);
+}
+
+.video-block-text {
+    font-family: var(--primary-font);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-color-light);
+    font-weight: 300;
+}
+/*===========*/
+ /* Minimalist Style */
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            opacity: 0.85;
+        }
+
+        .video-overlay-text {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+        }
+
+        .video-overlay-text h2 {
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        .section-title {
+            margin-top: 20px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .section-desc {
+            color: #777;
+            font-size: 15px;
+        }
+/* ======================================================
+ * 5. Exceptional Design Section (P8)
+ * ====================================================== */
+.exceptional-design-section {
+    background-color: var(--bg-white);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.exceptional-main-title {
+    font-family: var(--serif-font);
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+.design-subtitle {
+    font-family: var(--primary-font);
+    font-size: 1.05rem;
+    color: var(--text-color-light);
+    font-weight: 300;
+    margin-bottom: 4rem;
+}
+
+.feature-rendering-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.honest-design-title {
+    font-family: var(--primary-font);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color-dark);
+    margin-bottom: 1rem;
+}
+
+.honest-design-text {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color-light);
+    font-weight: 300;
+    margin-bottom: 5rem;
+}
+
+/* Four-Panel Grid Styling (Exact P8 Layout) */
+.design-grid {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grid-panel {
+    min-height: 400px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--border-light);
+    transition: background-color 0.3s ease;
+}
+
+.grid-panel:hover {
+    background-color: var(--accent-color-light); /* Hover on light tan panel */
+}
+
+.panel-space-utilization {
+    background-color: var(--accent-color-light); /* Light tan/beige color */
+}
+
+.panel-space-utilization:hover {
+    filter: brightness(1.05); /* Subtle effect on already colored panel */
+}
+
+.panel-craftsmanship {
+    background-color: var(--bg-white);
+}
+
+.grid-panel-title {
+    font-family: var(--primary-font);
+    font-weight: 600;
+    font-size: 1.35rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    color: var(--text-color-dark);
+}
+
+.panel-text p {
+    font-family: var(--primary-font);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-color-light);
+    font-weight: 300;
+}
+
+.panel-image {
+    overflow: hidden;
+}
+.panel-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.panel-image:hover img {
+    transform: scale(1.05); /* Hover zoom on image panels */
+}
+
+/* ======================================================
+ * 6. Our Team Section (P11)
+ * ====================================================== */
+.our-team-section {
+    background-color: var(--bg-white);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.team-main-title {
+    font-family: var(--serif-font);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+.team-intro-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 4rem;
+}
+
+.team-logo-block {
+    padding: 2rem 1rem;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    min-height: 200px;
+}
+
+.team-logo-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color-dark);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.team-logo {
+    max-height: 60px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.team-logo-block:hover .team-logo {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.logo-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+
+/* ======================================================
+ * 7. Vibrant Location Section (P14)
+ * ====================================================== */
+.location-hero-banner {
+    min-height: 400px;
+    /* NOTE: Replace this placeholder URL with your actual image path */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                      url('https://i.ibb.co.com/DPdWZ4mf/Screenshot-2025-11-17-141318.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.location-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.location-hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* Map Placeholder */
+.bonsai-map-placeholder {
+    width: 100%;
+    height: 550px;
+    background-color: #f7f7f7;
+   
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-note {
+    font-style: italic;
+    color: #888;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* POI Navigation Tabs (Mimicking the colored bar) */
+.location-nav {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.location-nav .nav-item {
+    flex: 1 1 20%; /* Ensure 5 equal columns */
+}
+
+.location-nav .nav-link {
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+    background-color: #ccc; /* Default neutral background */
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+/* Specific Tab Colors (Matching the design image) */
+#services-tab { background-color: #b67f70; }
+#cafes-tab { background-color: #b9937b; }
+#food-tab { background-color: #9d8c79; }
+#shopping-tab { background-color: #b8837a; }
+#education-tab { background-color: #80353b; }
+
+.location-nav .nav-link.active {
+    filter: brightness(1.2); /* Highlight active tab slightly */
+    color: #fff;
+    border: none;
+}
+.location-nav .nav-link:hover {
+    filter: brightness(1.1);
+}
+
+/* POI List Grid */
+.poi-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem 2rem;
+    padding: 2rem 0;
+    border: 1px solid #f0f0f0;
+    padding: 3rem;
+}
+
+.poi-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.poi-number {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #333;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.poi-logo {
+    max-height: 25px; /* Standardize logo size */
+    width: auto;
+}
+
+.poi-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Mobile adjustments */
+@media (max-width: 575px) {
+    .location-hero-banner {
+        min-height: 300px;
+    }
+    .location-hero-title {
+        font-size: 2rem;
+    }
+    .location-nav .nav-item {
+        flex: 1 1 50%; /* Stack tabs two per row on mobile */
+    }
+    .poi-list-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+}
+
+/* ======================================================
+ * 8. Gallery Section (P17)
+ * ====================================================== */
+.gallery-section {
+    background-color: var(--bg-white);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.gallery-title-block {
+    padding-bottom: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.gallery-main-title {
+    font-family: var(--serif-font);
+    font-size: 3.2rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    margin-bottom: 1rem;
+}
+
+.title-divider {
+    width: 90px;
+    height: 1px;
+    background-color: var(--accent-color-dark);
+    margin: 10px auto 0;
+}
+
+/* --- Gallery Grid Layout (Matching P17) --- */
+.gallery-grid {
+    margin: 0;
+}
+
+.gallery-item-link {
+    display: block;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item-link:hover .gallery-img {
+    transform: scale(1.05); /* Zoom on hover for all gallery images */
+}
+
+/* Ensure images fill height in the two-image column */
+.col-lg-4.col-md-4 .row .col-lg-12.col-md-12 {
+    height: 50%;
+}
+
+.gallery-caption {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #999;
+}
+
+
+/* ======================================================
+ * 9. Contact Us Section (P20)
+ * ====================================================== */
+.contact-us-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: var(--bg-white);
+}
+
+.contact-hero-banner {
+    min-height: 350px;
+    /* Image from Contact Us (P20) upload */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.4)),
+                      url('https://i.ibb.co.com/KcJn5qxQ/86e11271cc592bae5241ed9de190dbb7.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.contact-buttons-container {
+    z-index: 10;
+    /* This styling replicates the dark buttons from your brochure image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-contact-primary, .btn-contact-secondary {
+    font-family: var(--primary-font);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    min-width: 200px; /* Give buttons a minimum size */
+}
+
+.btn-contact-primary {
+    background-color: var(--accent-color-dark);
+    color: white;
+    border: 1px solid var(--accent-color-dark);
+}
+.btn-contact-primary:hover {
+    background-color: #665a51;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-contact-secondary {
+    background-color: transparent;
+    color: var(--accent-color-dark);
+    border: 1px solid var(--accent-color-dark);
+}
+.btn-contact-secondary:hover {
+    background-color: var(--accent-color-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.contact-note {
+    z-index: 10;
+    color: var(--bg-white);
+    font-weight: 300;
+    font-size: 0.95rem;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.contact-details-section {
+    border-top: 1px solid var(--border-light);
+    padding-top: 3rem;
+}
+
+.contact-location-title {
+    font-family: var(--primary-font);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.license-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+}
+.license-list li {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.license-label {
+    font-weight: 600;
+    color: var(--accent-color-dark);
+    display: inline-block;
+    width: 120px;
+}
+
+.detail-text {
+    font-weight: 300;
+    color: var(--text-color-light);
+}
+
+.bonsai-logo-large {
+    max-height: 80px;
+    width: auto;
+    opacity: 0.8;
+}
+
+.bonsai-tagline {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+
+/* ======================================================
+ * 10. Footer (Footer.png)
+ * ====================================================== */
+.bonsai-footer {
+    background-color: var(--accent-color-light); /* Light tan/beige background */
+    color: var(--accent-color-dark);
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.footer-title {
+    font-family: var(--serif-font);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline, .footer-address {
+    font-family: var(--primary-font);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-color-light);
+    margin: 0;
+}
+
+.footer-license {
+    font-family: var(--primary-font);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(125, 107, 94, 0.8); /* Muted accent color */
+    margin: 0;
+}
+
+.social-links {
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: var(--accent-color-dark);
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--text-color-dark);
+    transform: scale(1.2); /* Pop animation on hover */
+}
+
+/* ======================================================
+ * Media Queries for Responsiveness
+ * ====================================================== */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .philosophy-quote {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+    }
+    .philosophy-bottom-img {
+        height: 60vh;
+    }
+    .grid-panel {
+        min-height: 300px;
+    }
+    .location-nav .nav-item {
+        flex: 1 1 50%;
+    }
+    .contact-hero-banner {
+        min-height: 250px;
+    }
+    .contact-buttons-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+    .btn-contact-primary, .btn-contact-secondary {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .philosophy-main-title, .exceptional-main-title, .gallery-main-title, .team-main-title {
+        font-size: 2.2rem;
+    }
+    .video-thumb-container {
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+    }
+    .video-block-text {
+        margin-top: 1rem;
+    }
+    .poi-list-grid {
+        padding: 2rem;
+        grid-template-columns: 1fr;
+    }
+}
